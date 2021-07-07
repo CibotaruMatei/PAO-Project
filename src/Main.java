@@ -236,10 +236,13 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        DataManager dm = DataManager.getInstance();
-        dm.readData();
+        //DataManager dm = DataManager.getInstance();
+        DBManager db = DBManager.getInstance();
+        db.readData();
         meniuPrincipal();
+        //dm.readData();
+        //meniuPrincipal();
 
-        dm.writeData();
+        //dm.writeData();
     }
 }

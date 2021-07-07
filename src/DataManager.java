@@ -127,7 +127,7 @@ public class DataManager {
 
         for(Clasa c : catalog.getClase()) {
             for(Materie m : c.getMaterii()) {
-                csvWriter.writeNext(new String[] {c.getNume(), m.getNume(), m.getProfesor().getNume(), m instanceof MaterieTeza ? "True" : "False"});
+                csvWriter.writeNext(new String[] {c.getNume(), m.getNume(), m.getProfesor() == null ? "null" : m.getProfesor().getNume(), m instanceof MaterieTeza ? "True" : "False"});
             }
         }
 

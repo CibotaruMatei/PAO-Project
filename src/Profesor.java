@@ -1,5 +1,11 @@
+import java.time.LocalDate;
+
 public class Profesor extends Persoana {
     public Profesor(String nume, String ziNastere) {
+        super(nume, ziNastere);
+    }
+
+    public Profesor(String nume, LocalDate ziNastere) {
         super(nume, ziNastere);
     }
 

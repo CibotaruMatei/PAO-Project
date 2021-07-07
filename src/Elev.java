@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Elev extends Persoana {
     private Clasa clasa;
 
@@ -6,9 +8,9 @@ public class Elev extends Persoana {
         clasa = c;
     }
 
-    public Elev() {
-        super();
-        clasa = null;
+    public Elev(String nume, LocalDate ziNastere, Clasa c) {
+        super(nume, ziNastere);
+        clasa = c;
     }
 
     public Clasa getClasa() {

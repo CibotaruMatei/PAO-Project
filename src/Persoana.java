@@ -10,6 +10,11 @@ public class Persoana implements Comparable<Persoana> {
         this.ziNastere = LocalDate.parse(ziNastere);
     }
 
+    public Persoana(String nume, LocalDate ziNastere) {
+        this.nume = nume;
+        this.ziNastere = ziNastere;
+    }
+
     public Persoana() {
         this("", "2000-01-01");
     }
