@@ -40,4 +40,9 @@ public class Materie {
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
+
+    @Override
+    public String toString() {
+        return nume + " este predata de " + profesor.getNume();
+    }
 }
