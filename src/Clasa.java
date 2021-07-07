@@ -7,31 +7,58 @@ public class Clasa {
     private List<Materie> materii;
     private SortedSet<Elev> elevi;
     private Profesor diriginte;
-    private String nume;
+    private final String nume;
 
-    Clasa(String s) {
+    Clasa(String s, Profesor d) {
         nume = s;
         materii = new ArrayList<>();
         elevi = new TreeSet<>();
-        diriginte = null;
+        diriginte = d;
     }
 
-    public void addElev(String s, int v) {
-        elevi.add(new Elev(s, v));
+    public void addMaterie(Materie m) {
+        materii.add(m);
+    }
+    public Materie findMaterie(String s) throws ObjectNotFoundException {
+        for(Materie m : materii)
+            if(s.equals(m.getNume()))
+                return m;
+        throw new ObjectNotFoundException(s);
+    }
+    public List<Materie> getMaterii() {
+        return materii;
     }
 
-    public boolean isElev(String s) {
-        for(Elev e : elevi)
-            if (e.nume.equals(s))
-                return true;
-        return false;
+    public void addElev(Elev e) {
+        elevi.add(e);
+        for(Materie m : materii) {
+            m.getNote().put(e, null);
+        }
+    }
+    public String getNume() {
+        return nume;
+    }
+    public SortedSet<Elev> getElevi() {
+        return elevi;
     }
 
-    void addMaterie() {
-
+    public Profesor getDiriginte() {
+        return diriginte;
+    }
+    public void setDiriginte(Profesor diriginte) {
+        this.diriginte = diriginte;
     }
 
-    void addMaterie(String s) {
-
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(nume + ": diriginte " + diriginte.getNume() + "\nElevi:\n");
+        for(Elev e : elevi) {
+            result.append(e.getNume()).append("\n");
+        }
+        result.append("Materii:\n");
+        for(Materie m : materii) {
+            result.append(m.getNume()).append("\n");
+        }
+        return result.toString();
     }
 }

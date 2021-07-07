@@ -1,27 +1,43 @@
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class Materie {
-    Profesor profesor;
-    HashMap<Elev, ArrayList<Integer>> note;
+    private final String nume;
+    private Profesor profesor;
+    private HashMap<Elev, ArrayList<Nota>> note;
 
-    Materie() {
-        this((Profesor) null);
-    }
-
-    Materie(String s) {
-        this(Catalog.getInstance().findProfesor(s));
-    }
-
-    Materie(Profesor p) {
+    public Materie(String s, Profesor p, SortedSet<Elev> elevi) {
+        nume = s;
         profesor = p;
+        note = new HashMap<>();
+        for(Elev e : elevi) {
+            note.put(e, new ArrayList<>());
+        }
     }
 
-    void addNota(int i, String s) {
-        addNota(i, Catalog.getInstance().findElev(s));
+    public HashMap<Elev, ArrayList<Nota>> getNote() {
+        return note;
     }
 
-    void addNota(int i, Elev e) {
-        note.get(e).add(i);
+    public void addNota(int i, Elev e) {
+        note.get(e).add(new Nota(i, e, this));
+    }
+
+    public double getMedie(Elev e) {
+        double medie = 0;
+        for(Nota n : note.get(e)) {
+            medie += n.getNota();
+        }
+        return medie / note.get(e).size();
+    }
+
+    public String getNume() {
+        return nume;
+    }
+    public Profesor getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(Profesor profesor) {
+        this.profesor = profesor;
     }
 }

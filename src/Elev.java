@@ -1,9 +1,25 @@
 public class Elev extends Persoana {
-    Elev(String nume, int varsta) {
-        super(nume, varsta);
+    private Clasa clasa;
+
+    public Elev(String nume, String ziNastere, Clasa c) {
+        super(nume, ziNastere);
+        clasa = c;
     }
 
-    Elev() {
+    public Elev() {
         super();
+        clasa = null;
+    }
+
+    public Clasa getClasa() {
+        return clasa;
+    }
+    public void setClasa(Clasa clasa) {
+        this.clasa = clasa;
+    }
+
+    @Override
+    public String toString() {
+        return "Elev " + nume + (clasa == null ? "" : (" al clasei " + clasa.getNume())) + " cu ziua de nastere " + ziNastere.toString();
     }
 }

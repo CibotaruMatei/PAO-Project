@@ -1,10 +1,14 @@
 public class Profesor extends Persoana {
-
-    Profesor(String nume, int varsta) {
-        super(nume, varsta);
+    public Profesor(String nume, String ziNastere) {
+        super(nume, ziNastere);
     }
 
-    Profesor() {
+    public Profesor() {
         super();
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor " + nume + " cu ziua de nastere " + ziNastere.toString();
     }
 }
